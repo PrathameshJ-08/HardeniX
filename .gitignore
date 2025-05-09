@@ -1,0 +1,6 @@
+*.log
+*.bak
+*.retry
+*.swp
+__pycache__/
+*.tar.gz

@@ -1,0 +1,17 @@
+---
+- name: Install Lynis
+  apt:
+    name: lynis
+    state: present
+
+- name: Install Fail2Ban
+  apt:
+    name: fail2ban
+    state: present
+
+- name: Add Lynis weekly cron job
+  cron:
+    name: "Lynis Weekly Scan"
+    job: "/usr/bin/lynis audit system >> /var/log/lynis.log"
+    weekday: 0
+    hour: 2

@@ -1,0 +1,11 @@
+---
+- name: Security-as-Code Automation
+  hosts: all
+  become: true
+  roles:
+    - hardening
+    - ssh
+    - firewall
+    - tools
+    - auditing
+

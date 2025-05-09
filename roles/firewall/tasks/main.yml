@@ -1,0 +1,25 @@
+---
+- name: Install ufw
+  apt:
+    name: ufw
+    state: present
+
+- name: Enable UFW and set default policy
+  ufw:
+    state: enabled
+    policy: deny
+
+- name: Allow SSH on new port
+  ufw:
+    rule: allow
+    port: 2222
+    proto: tcp
+
+- name: Allow HTTP and HTTPS
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+  loop:
+    - 80
+    - 443
+

@@ -1,0 +1,16 @@
+---
+- name: Install auditd and AIDE
+  apt:
+    name:
+      - auditd
+      - aide
+    state: present
+
+- name: Initialize AIDE
+  command: aideinit creates=/var/lib/aide/aide.db.new.gz
+
+- name: Enable auditd service
+  service:
+    name: auditd
+    enabled: true
+    state: started
